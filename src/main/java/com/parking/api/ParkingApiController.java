@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Parking API", description = "Parking resource endpoints")
 public class ParkingApiController {
 
-    @GetMapping("/api/status")
+    @GetMapping({"/status", "/api/status"})
     @Operation(summary = "Get API service status")
     public Map<String, String> status() {
         return Map.of(
@@ -24,7 +24,7 @@ public class ParkingApiController {
         );
     }
 
-    @GetMapping("/api/secure/sample")
+    @GetMapping({"/api/secure/sample", "/api/secure/hello"})
     @Operation(summary = "Access a secured sample API")
     @SecurityRequirement(name = "bearerAuth")
     public Map<String, String> secureSample(Authentication authentication) {
